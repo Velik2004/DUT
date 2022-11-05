@@ -1,0 +1,17 @@
+#include <iostream>   // завдання 5
+#include <string>
+using namespace std;
+
+int main()
+{
+    int num;
+    cout<<"Please enter number:";
+    cin>>num;
+    int x=0;
+    while(num)
+    {
+        x=x*10+num%10;
+        num/=10;
+    }
+    cout<<"Result="<<x;
+}
