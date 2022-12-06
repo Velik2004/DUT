@@ -1,0 +1,48 @@
+3. Напишіть програму, що змінює місцями найбільший і найменший елементи
+заданого не порожнього масиву різних чисел і потім друкує отриманий масив.
+
+
+#include <iostream>
+
+using namespace std;
+int main() {
+  int N=5, n1, n2;
+  int array[5] = {5, 3, 6, 1, 0};
+  
+  cout << "Input array:"<<endl;
+  for(int i=0; i<N; i++){
+    if (i==N-1){
+      cout << array[i] << endl; 
+    }else{
+      cout << array[i] << ", ";    
+    }
+  }
+  
+  int max = array[0];
+  for (int i = 0; i < N; i++) {
+    if (array[i] > max) {
+      max = i;
+      n1 = array[i];
+    }
+  }
+  
+  int min = array[0];
+  for (int i = 0; i < N; i++) {
+    if (array[i] < min) {
+      min = i;
+      n2 = array[i];
+    }
+  }
+  
+  array[min] = n1;
+  array[max] = n2;
+  
+  cout << "Output array:"<<endl;
+  for(int i=0; i<N; i++){
+    if (i==N-1){
+      cout << array[i] << endl; 
+    }else{
+      cout << array[i] << ", ";    
+    }
+  }
+}

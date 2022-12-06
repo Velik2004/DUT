@@ -1,0 +1,28 @@
+5. Напишіть програму, що друкує другий по величині елемент заданого не
+порожнього масиву різних чисел. 
+
+
+#include <iostream>
+
+using namespace std;
+int main() {
+  int smax, N=10;
+  int array[10] = {5, 8, 9, 2, 3, 6, 0, 4, 1, 7};
+
+  cout << "Output array:";
+  for(int i=0;i<N;i++){
+    if(i==N-1){
+      cout << array[i] << endl;
+    }else{
+      cout << array[i] << ", ";
+    }
+  }
+  int max = array[0];
+  for(int i=0;i<N;i++){
+    if(array[i]>max){
+      smax=max;
+      max=array[i];
+    }
+  }
+  cout << "The second largest number = " << smax;
+}	
