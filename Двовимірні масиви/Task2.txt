@@ -1,0 +1,33 @@
+2. Задати двомірний масив 𝑚 ∗ 𝑛 цілих чисел 𝑚 = 6, 𝑛 = 4. Визначити
+кількість парних чисел у кожному стовпчику.
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+	int arr[6][4];
+	
+	srand(time(0));
+	
+	for (int i = 0; i < 6; i++)
+		for (int j = 0; j < 4; j++)
+			arr[i][j] = rand() % 9 + 1;
+			
+	for (int i = 0; i < 6; i++) {
+		for (int j = 0; j < 4; j++)
+			cout << arr[i][j] << " ";
+		cout << endl;
+	}
+	
+	for (int i = 0; i < 4; i++) {
+		int evenLines = 0;
+		for (int j = 0; j < 6; j++)
+		{
+			if (arr[j][i] % 2 == 0) evenLines++;
+		}
+		cout << "Column " << i + 1 << " - " << evenLines << endl;
+	}
+	return 0;
+}

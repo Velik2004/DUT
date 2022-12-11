@@ -1,0 +1,40 @@
+3. Задати двомірний масив 𝑚 ∗ 𝑛 цілих чисел 𝑚 = 5, 𝑛 = 7. Обчислити
+суму елементів кожного рядка.
+
+
+#include <iostream>
+#include<cstdlib>
+#include<ctime>
+
+
+using namespace std;
+int main() {
+  int m=5, n=7;
+  int elements[m];
+  int array[m][n];
+
+  srand(time(NULL));
+  for(int i=0;i<m;i++)
+    elements[i] = 0;
+  
+  for(int i=0;i<m;i++){
+    for(int j=0;j<n;j++){
+      array[i][j]= rand()%10;
+    }
+  }
+  for(int i=0;i<m;i++){
+    for(int j=0;j<n;j++){
+        cout << array[i][j] <<  "  "; 
+    }
+cout <<endl;
+  }
+  for(int i=0;i<m;i++){
+    for(int j=0;j<n;j++){
+        elements[i]+=array[i][j];
+      
+    }
+  }
+  for(int i=0;i<m;i++)
+    cout << "In " << i+1 << " line the sum = " << elements[i] << endl;
+  
+}

@@ -1,0 +1,43 @@
+5. Задати двомірний масив 𝑚 ∗ 𝑛 цілих чисел 𝑚 = 3, 𝑛 = 4. Знайти
+максимальний елемент у масиві. Вивести на екран його значення та номер.
+
+
+#include <iostream>
+#include<cstdlib>
+#include<ctime>
+
+
+using namespace std;
+int main() {
+  int m=3, n=4, max=0, index;
+  int elements[n];
+  int array[m][n];
+
+  srand(time(NULL));
+  for(int i=0;i<n;i++)
+    elements[i] = 0;
+  
+  for(int i=0;i<m;i++)
+    for(int j=0;j<n;j++)
+      array[i][j]= rand()%10;
+    
+  
+  for(int i=0;i<m;i++){
+    for(int j=0;j<n;j++){
+        cout << array[i][j] << " ";
+      
+    }
+  cout<<endl;
+  }
+  
+  for(int i=0;i<m;i++){
+    for(int j=0;j<n;j++){
+       if(array[i][j]>max){
+        max = array[i][j];
+        index = i*n+j+1;
+      }
+      
+  }}
+    cout << "The maximum element in the array " << max << " located at number: " << index << endl;
+  
+}
