@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int vector[] = { 3, -5, 7, 10, -4, 14, 5, 2, -13 };
+    int n = sizeof(vector) / sizeof(vector[0]);
+
+    int *min_element = &vector[0];
+    for (int i = 1; i < n; i++) {
+        if (*(vector + i) < *min_element) {
+            min_element = vector + i;
+        }
+    }
+
+    cout << "Minimum array element: " << *min_element << endl;
+
+    return 0;
+}
