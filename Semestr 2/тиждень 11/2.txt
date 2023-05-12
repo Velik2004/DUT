@@ -1,0 +1,35 @@
+#include <iostream>
+
+class Square
+{
+private:
+    double side;
+    double area;
+
+public:
+    void set_side(double new_side)
+    {
+        if (new_side >= 0) {
+            side = new_side;
+            area = side * side;
+        }
+    }
+
+    void print()
+    {
+        std::cout << "Side: " << side << std::endl;
+        std::cout << "Area: " << area << std::endl;
+    }
+};
+
+int main()
+{
+    Square square;
+    square.set_side(2.5);
+    square.print();
+
+    square.set_side(-1.0);
+    square.print();
+
+    return 0;
+}

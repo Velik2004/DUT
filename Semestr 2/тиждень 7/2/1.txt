@@ -1,0 +1,78 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+struct Date {
+    int year;
+    int month;
+    int day;
+};
+
+// Функція для визначення чи є рік високосним
+bool isLeap(int year) {
+    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Функція для визначення кількості днів у місяці
+int monthLength(int year, int month) {
+    int days;
+    if (month == 2) {
+        days = isLeap(year) ? 29 : 28;
+    } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+        days = 30;
+    } else {
+        days = 31;
+    }
+    return days;
+}
+
+// Функція для отримання поточної дати
+Date today() {
+    time_t t = time(NULL);
+    tm tl = *localtime(&t);
+
+    Date currentDate;
+    currentDate.year = tl.tm_year + 1900;
+    currentDate.month = tl.tm_mon + 1;
+    currentDate.day = tl.tm_mday;
+
+    return currentDate;
+}
+
+int main() {
+    // Отримуємо поточну дату
+    Date currentDate = today();
+
+    // Отримуємо рік, місяць та день народження користувача
+    int birthYear, birthMonth, birthDay;
+    cout << "Enter your birth year: ";
+    cin >> birthYear;
+    cout << "Enter your birth month: ";
+    cin >> birthMonth;
+    cout << "Enter your birth day: ";
+    cin >> birthDay;
+
+    // Розраховуємо кількість днів між днем народження та поточною датою
+    int days = 0;
+    for (int year = birthYear; year <= currentDate.year; year++) {
+        int startMonth = (year == birthYear) ? birthMonth : 1;
+        int endMonth = (year == currentDate.year) ? currentDate.month - 1 : 12;
+
+        for (int month = startMonth; month <= endMonth; month++) {
+            int monthDays = monthLength(year, month);
+            int startDay = (year == birthYear && month == birthMonth) ? birthDay : 1;
+            int endDay = (year == currentDate.year && month == currentDate.month - 1) ? currentDate.day : monthDays;
+
+            days += endDay - startDay + 1;
+        }
+    }
+
+    cout << "Days since your birth: " << days << endl;
+
+    return 0;
+}

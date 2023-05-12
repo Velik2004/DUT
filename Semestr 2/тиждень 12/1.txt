@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+
+class ShopItemOrder {
+public:
+
+    ShopItemOrder(const std::string& name, double price, int quantity)
+        : item_name(name), item_price(price), item_quantity(quantity) {}
+
+
+    std::string getItemName() const {
+        return item_name;
+    }
+
+    double getItemPrice() const {
+        return item_price;
+    }
+
+    int getItemQuantity() const {
+        return item_quantity;
+    }
+
+    double getTotalPrice() const {
+        return item_price * item_quantity;
+    }
+
+
+    void setItemName(const std::string& name) {
+        item_name = name;
+    }
+
+    void setItemPrice(double price) {
+        item_price = price;
+    }
+
+    void setItemQuantity(int quantity) {
+        item_quantity = quantity;
+    }
+
+  
+    void printOrder() const {
+        std::cout << "Item name: " << item_name << std::endl;
+        std::cout << "Item price: " << item_price << std::endl;
+        std::cout << "Quantity: " << item_quantity << std::endl;
+        std::cout << "Total price: " << getTotalPrice() << std::endl;
+    }
+
+private:
+    std::string item_name;
+    double item_price;
+    int item_quantity;
+};
+
+int main() {
+
+    ShopItemOrder order("Shirt", 25.0, 2);
+    order.printOrder();
+
+
+    order.setItemQuantity(3);
+    order.printOrder();
+
+    return 0;
+}

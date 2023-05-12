@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Person
+{
+public:
+    string name;
+    int age;
+    string occupation; 
+
+    void introduce() 
+    {
+        cout << "Hi, my name is " << name << ", I am " << age << " years old and work as a " << occupation << "." << endl;
+    }
+};
+
+int main()
+{
+    Person person;
+    person.name = "Harry";
+    person.age = 23;
+    person.occupation = "programmer"; 
+
+    cout << "Meet " << person.name << endl;
+    person.introduce(); 
+    return 0;
+}
